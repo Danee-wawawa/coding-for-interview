@@ -56,6 +56,14 @@ void printList_recursively(ListNode* pHead){
         printf("%d\t", pHead -> m_nValue);
     }
 }
+void Destroy(ListNode* node){
+	ListNode* pNode = node;
+	while(node != NULL){
+		node = node -> m_pNext;
+		delete pNode;
+		pNode = node;
+	}
+}
 void Test(ListNode* node){
     printList(node);
     printList_iteratively(node);
@@ -71,6 +79,7 @@ void Test1(){
     ConnectNode(node2, node3);
     ConnectNode(node3, node4);
     Test(node1);
+    Destroy(node1);
 }
 int main(int argc, char* argv[]){
     Test1();
